@@ -1,0 +1,16 @@
+<% provide(:title, 'All books') %>
+<h1>商品一覧画面</h1>
+
+<ul class="books">
+  <% @books.each do |book| %>
+      <h1>
+        <%= image_tag book.picture.url, :size => '120x160' if book.picture? %>
+      </h1>
+      <p>
+        タイトル：<%= link_to book.title, book %><br>
+        著者：<%= book.author %><br>
+        価格：<%= book.price %>円<br>
+        在庫：<%= book.stock %>個
+      </p>
+  <% end %>
+</ul>

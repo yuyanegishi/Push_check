@@ -1,0 +1,45 @@
+current directory: /Users/negishiyuya/Desktop/environment/db_sample12_app/vendor/bundle/ruby/2.5.0/gems/mysql2-0.5.2/ext/mysql2
+/Users/negishiyuya/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20190206-20389-qxceh0.rb extconf.rb --with-ldflags=-L/usr/local/opt/openssl/lib --with-cppflags=-I/usr/local/opt/openssl/include
+checking for rb_absint_size()... yes
+checking for rb_absint_singlebit_p()... yes
+checking for rb_wait_for_single_fd()... yes
+-----
+Using mysql_config at /usr/local/bin/mysql_config
+-----
+checking for mysql.h... yes
+checking for errmsg.h... yes
+checking for SSL_MODE_DISABLED in mysql.h... no
+checking for MYSQL_OPT_SSL_ENFORCE in mysql.h... yes
+checking for MYSQL.net.vio in mysql.h... no
+checking for MYSQL.net.pvio in mysql.h... yes
+checking for MYSQL_ENABLE_CLEARTEXT_PLUGIN in mysql.h... yes
+checking for SERVER_QUERY_NO_GOOD_INDEX_USED in mysql.h... yes
+checking for SERVER_QUERY_NO_INDEX_USED in mysql.h... yes
+checking for SERVER_QUERY_WAS_SLOW in mysql.h... yes
+checking for MYSQL_OPTION_MULTI_STATEMENTS_ON in mysql.h... yes
+checking for MYSQL_OPTION_MULTI_STATEMENTS_OFF in mysql.h... yes
+checking for my_bool in mysql.h... yes
+-----
+Setting rpath to /usr/local/Cellar/mariadb/10.3.12/lib
+-----
+creating Makefile
+
+current directory: /Users/negishiyuya/Desktop/environment/db_sample12_app/vendor/bundle/ruby/2.5.0/gems/mysql2-0.5.2/ext/mysql2
+make "DESTDIR=" clean
+
+current directory: /Users/negishiyuya/Desktop/environment/db_sample12_app/vendor/bundle/ruby/2.5.0/gems/mysql2-0.5.2/ext/mysql2
+make "DESTDIR="
+compiling client.c
+client.c:140:1: warning: control may reach end of non-void function [-Wreturn-type]
+}
+^
+1 warning generated.
+compiling infile.c
+compiling mysql2_ext.c
+compiling result.c
+compiling statement.c
+linking shared-object mysql2/mysql2.bundle
+
+current directory: /Users/negishiyuya/Desktop/environment/db_sample12_app/vendor/bundle/ruby/2.5.0/gems/mysql2-0.5.2/ext/mysql2
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 mysql2.bundle ./.gem.20190206-20389-1cvbjn3/mysql2

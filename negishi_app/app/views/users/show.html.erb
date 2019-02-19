@@ -1,0 +1,32 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
+</div>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <% if @user.addresses.any? %>
+          <h1>
+            登録住所一覧
+          </h1>
+            <% @addresses.each do | address | %>
+            <p>
+              氏名：<%= link_to address.consignee, address %><br>
+              郵便番号：<%= address.first_postal_code %>-<%= address.last_postal_code %><br>
+              住所：<%= address.first_address %><%= address.second_address %><br>
+              電話番号：<%= address.phone %>
+            </p>
+            <% end %>
+        <% end %>
+      </h1>
+    </section>
+  </aside>
+</div>

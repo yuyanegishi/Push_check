@@ -1,0 +1,14 @@
+<% provide(:title, @address.consignee) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>登録住所</h1>
+      <p>
+        氏名：<%= @address.consignee %><br>
+        郵便番号：<%= @address.first_postal_code %>-<%= @address.last_postal_code %><br>
+        住所：<%= @address.first_address %><%= @address.second_address %><br>
+        電話番号：<%= @address.phone %><br>
+      </p>
+    </section>
+  </aside>
+</div>

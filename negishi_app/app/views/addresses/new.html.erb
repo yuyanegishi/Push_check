@@ -1,0 +1,33 @@
+<% provide(:title, 'Registration') %>
+<h1>住所登録画面</h1> 
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@address) do |f| %>
+      <%= render 'shared/error_messages_address' %>
+
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+
+      <%= f.label :consignee,"氏名" %>
+      <%= f.text_field :consignee, class: 'form-control' %>
+
+      <%= f.label :first_postal_code,"郵便番号（上3桁）" %>
+      <%= f.number_field :first_postal_code, class: 'form-control' %>
+
+      <%= f.label :last_postal_code,"郵便番号（下4桁）" %>
+      <%= f.number_field :last_postal_code, class: 'form-control' %>
+
+      <%= f.label :first_address, "住所１" %>
+      <%= f.text_field :first_address, class: 'form-control' %>
+
+      <%= f.label :second_address, "住所２" %>
+      <%= f.text_field :second_address, class: 'form-control' %>
+
+      <%= f.label :phone,"電話番号（ハイフンを除く）" %>
+      <%= f.number_field :phone, class: 'form-control' %>
+
+      <%= f.submit "住所登録", class: "btn btn-primary" %>
+
+    <% end %>
+  </div>
+</div>

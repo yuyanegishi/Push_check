@@ -1,0 +1,24 @@
+<% provide(:title, 'All addresses') %>
+<h1>住所選択画面</h1>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+        <% if @addresses.any? %>
+            <% @addresses.each do | address | %>
+            <p>
+              氏名：<%= address.consignee %><br>
+              郵便番号：<%= address.first_postal_code %>-<%= address.last_postal_code %><br>
+              住所：<%= address.first_address %><%= address.second_address %><br>
+              電話番号：<%= address.phone %><br>
+
+              <%= form_for(current_user, html: { method: :patch }) do |f| %>
+                <%= f.hidden_field :selected_address, :value => address.id %>
+                <%= f.submit "選択", class: "btn btn-primary" %>
+              <% end %>
+            </p>
+            <% end %>
+        <% end %>
+    </section>
+  </aside>
+</div>

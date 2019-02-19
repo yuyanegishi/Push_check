@@ -1,0 +1,43 @@
+<% provide(:title, 'All cart_items') %>
+<%= render 'shared/error_messages_cartindex' %>
+<h1>カート画面</h1>
+
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+        <% if @cartitems.any? %>
+            <% @cartitems.each do | cartitem | %>
+            <h1>
+              <%= image_tag cartitem.book.picture.url, :size => '180x240' if cartitem.book.picture? %>
+            </h1>
+            <p>
+              タイトル：<%= cartitem.book.title %><br>
+              著者：<%= cartitem.book.author %><br>
+              価格：<%= cartitem.book.price %>円<br>
+              在庫：<%= cartitem.book.stock %>個<br>
+
+              <%= form_for(cartitem) do |f| %>
+                <%= f.label :quantity,"数量" %>
+                <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
+
+                <%= f.submit "数量を変更する", class: "btn btn-primary" %>
+              <% end %><br>
+
+              <%= form_for(cartitem, html: { method: :delete }) do |f| %>
+                <%= f.submit "削除", class: "btn btn-primary" %>
+              <% end %>
+
+            </p>
+            <% end %>
+            <hr>
+              発注数：<%= @sum_quantity %>点<br>
+              小計：<%= @sum_price %>円<br><br>
+              <%= link_to "レジへ進む", addresses_path, class: "btn btn-primary" %>
+        <% else %>
+            <p>
+              カート内に商品はありません。
+            </p>
+        <% end %>
+    </section>
+  </aside>
+</div>

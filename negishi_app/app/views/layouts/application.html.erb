@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Negishi_App</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all',
+                               'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application',
+                               'data-turbolinks-track': 'reload' %>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+    <![endif]-->
+  </head>
+  <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <%= link_to "NC_BOOKS", root_path , id: "logo" %>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "商品一覧", books_path %></li>
+          
+            <% unless logged_in? %>
+              <li><%= link_to "ユーザー登録",   signup_path %></li>
+            <% end %>
+
+            <% if logged_in? %>
+              <li><%= link_to "カート", cart_items_path %></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  アカウント <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "プロフィール", current_user %></li>
+                  <li><%= link_to "住所登録", registration_path %></li>
+                  <li class="divider"></li>
+                  <li>
+                    <%= link_to "ログアウト", logout_path, method: :delete %>
+                  </li>
+                </ul>
+              </li>
+            <% else %>
+              <li><%= link_to "ログイン", login_path %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+      <%= debug(params) if Rails.env.development? %>
+    </div>
+  </body>
+</html>

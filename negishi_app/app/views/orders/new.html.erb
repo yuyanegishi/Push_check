@@ -1,0 +1,44 @@
+<% provide(:title, 'All Orders') %>
+<h1>注文確認画面</h1>
+<%= render 'shared/error_messages_ordernew1' %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+        <% if @cartitems.any? %>
+            <% @cartitems.each do | cartitem | %>
+            <h1>
+              購入商品一覧<br><br>
+              <%= image_tag cartitem.book.picture.url, :size => '180x240' if cartitem.book.picture? %>
+            </h1>
+            <p>
+              タイトル：<%= cartitem.book.title %><br>
+              著者：<%= cartitem.book.author %><br>
+              価格：<%= cartitem.book.price %>円<br>
+              数量：<%= cartitem.quantity %><br>
+            </p>
+            <% end %>
+            <hr>
+            <h1>発送先住所</h1><br>
+            <p>
+              氏名：<%= @address.consignee %><br>
+              郵便番号：<%= @address.first_postal_code %>-<%= @address.last_postal_code %><br>
+              住所：<%= @address.first_address %><%= @address.second_address %><br>
+              電話番号：<%= @address.phone %><br>
+            </p>
+            <hr>
+              発注数：<%= @sum_quantity %>点<br>
+              小計：<%= @sum_price %>円<br><br>
+
+              <%= form_for(@order) do |f| %>
+
+                <%= f.submit "購入確定", class: "btn btn-primary" %>
+
+              <% end %>
+        <% else %>
+            <p>
+              カート内に商品がありません。再度商品を選択の上、ご購入手続きを行なってください
+            </p>
+        <% end %>
+    </section>
+  </aside>
+</div>

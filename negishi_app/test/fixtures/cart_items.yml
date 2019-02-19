@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  book: one
+  quantity: 1
+  planned_price: 1
+
+two:
+  user: two
+  book: two
+  quantity: 1
+  planned_price: 1
